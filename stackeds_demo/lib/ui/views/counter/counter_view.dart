@@ -13,9 +13,16 @@ class CounterView extends StackedView<CounterViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      floatingActionButton:
+          FloatingActionButton(onPressed: viewModel.incrementCounter),
+      body: Center(
+        child: Text(
+          viewModel.counter.toString(),
+          style: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
@@ -23,5 +30,6 @@ class CounterView extends StackedView<CounterViewModel> {
   @override
   CounterViewModel viewModelBuilder(
     BuildContext context,
-  ) => CounterViewModel();
+  ) =>
+      CounterViewModel();
 }
